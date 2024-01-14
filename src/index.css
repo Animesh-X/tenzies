@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  background-color: rgba(11, 36, 52, 1);
+  padding: 30px;
+  font-family: 'Karla', sans-serif;
+}
