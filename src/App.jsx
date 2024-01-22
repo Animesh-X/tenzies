@@ -22,17 +22,19 @@ function App() {
   }, [dice])
 
   React.useEffect(() => {
-    console.log('redgewvf');
     const storedScore = Number(localStorage.getItem("score"))
     console.log(typeof(storedScore));
     console.log(storedScore);
+    console.log(count);
+    if(count != storedScore) {
+      console.log('Updated best score');
+      setBestScore(Number(localStorage.getItem("score")));
+    }
     if ((count < storedScore || storedScore === 0) && count !== 0) {
       console.log('bfef');
       localStorage.setItem("score", count.toString());
     }
-    if(count != Number(localStorage.getItem("score"))) {
-      setBestScore(Number(localStorage.getItem("score")));
-    }
+    
   }, [tenzies])
 
   function generateNewDie() {
@@ -87,7 +89,7 @@ function App() {
       </div>
       <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll"}</button>
       <p className={`${tenzies ? '' : 'display-hide'}`} >You took {count} rolls to complete</p>
-      <p className={`${tenzies ? '' : 'display-hide'}`} >Your best score is {bestScore}</p>
+      <p className={`${tenzies ? '' : 'display-hide'}`} >Your best score is {`${count < bestScore ? count : bestScore}`}</p>
     </main>
   )
 }
